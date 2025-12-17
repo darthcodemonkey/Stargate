@@ -1,0 +1,23 @@
+﻿<div class="app-container">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a routerLink="/persons" class="nav-brand">
+        <span class="nav-logo">🚀</span>
+        <span class="nav-title">Stargate ACTS</span>
+      </a>
+      <div class="nav-links">
+        <a routerLink="/persons" routerLinkActive="active" class="nav-link">
+          Astronauts
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer">
+    <p>Astronaut Career Tracking System (ACTS) - Stargate</p>
+  </footer>
+</div>

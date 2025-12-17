@@ -99,8 +99,10 @@ exercise1/
 - `PUT /api/person/{name}` - Update person (NEW)
 
 ### Astronaut Duty Endpoints
-- `GET /api/astronaut-duty/{name}` - Get astronaut duties by name (FIXED)
-- `POST /api/astronaut-duty` - Create astronaut duty
+- `GET /api/AstronautDuty/{name}` - Get astronaut duties by name
+- `POST /api/AstronautDuty` - Create astronaut duty
+
+**Note**: Route uses PascalCase (`/api/AstronautDuty`) to match controller route `api/[controller]` which resolves from `AstronautDutyController`.
 
 ## Configuration
 
@@ -114,20 +116,22 @@ exercise1/
 - Logs written to `logs/stargate-YYYYMMDD.log`
 - Structured logging with context enrichment
 
-## Next Steps (Optional)
+## UI Implementation ✅
 
-1. **Database Migration**: Run EF migrations to create database schema
-   ```bash
-   dotnet ef migrations add InitialCreate --project domain --startup-project api
-   dotnet ef database update --project domain --startup-project api
-   ```
+### Angular UI Application
+- **Location**: `Stargate.UI/stargate.ui.client/`
+- **Framework**: Angular 18.2.0
+- **Build**: Automatic via MSBuild JavaScript SDK
+- **Components**: PersonList, PersonDetail, AstronautDutyForm
+- **Services**: PersonService, AstronautDutyService
+- **Hosting**: ASP.NET Core serves Angular build output
+- **Proxy**: Custom middleware forwards `/api/*` to Stargate.API via Aspire service discovery
 
-2. **Testing**: Create unit tests for services and integration tests for API
-   - Target >50% code coverage
-   - Test business rule enforcement
-   - Test error scenarios
-
-3. **Cleanup**: Remove old Business folder (currently excluded from build)
+### Database Seeding ✅
+- **Location**: `Stargate.Domain/Data/DatabaseSeeder.cs`
+- **Data**: 7 People, 18 Astronaut Duties
+- **Scenarios**: Active astronauts, retired astronauts, persons without assignments
+- **Automatic**: Runs on application startup if database is empty
 
 ## Build Status
 

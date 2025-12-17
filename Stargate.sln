@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stargate.API", "Stargate.Api\Stargate.API.csproj", "{A8E2288C-4CB8-69EF-2F8E-6532265558F5}"
 EndProject
@@ -10,6 +10,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stargate.Domain", "Stargate.Domain\Stargate.Domain.csproj", "{6BECFDF0-8423-9EB4-A069-2B6F1D1B697A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stargate.Services", "Stargate.Services\Stargate.Services.csproj", "{3955A4A4-7899-9E2F-FEDB-18768A9517E3}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Stargate.UI.Client", "Stargate.UI\stargate.ui.client\Stargate.UI.Client.esproj", "{2856D196-EBAA-D3C7-AE54-8324F066F8F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stargate.UI.Server", "Stargate.UI\Stargate.UI.Server\Stargate.UI.Server.csproj", "{3D6984E1-CF77-AEC3-16AC-39F589CFD4F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stargate.AppHost", "Stargate.AppHost\Stargate.AppHost.csproj", "{5C168DE0-206F-44F8-B10C-89AD76C46C45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stargate.ServiceDefaults", "Stargate.ServiceDefaults\Stargate.ServiceDefaults.csproj", "{55C593C5-EA8C-060D-8D0C-1EADEF364337}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +41,22 @@ Global
 		{3955A4A4-7899-9E2F-FEDB-18768A9517E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3955A4A4-7899-9E2F-FEDB-18768A9517E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3955A4A4-7899-9E2F-FEDB-18768A9517E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2856D196-EBAA-D3C7-AE54-8324F066F8F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2856D196-EBAA-D3C7-AE54-8324F066F8F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2856D196-EBAA-D3C7-AE54-8324F066F8F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2856D196-EBAA-D3C7-AE54-8324F066F8F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D6984E1-CF77-AEC3-16AC-39F589CFD4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D6984E1-CF77-AEC3-16AC-39F589CFD4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D6984E1-CF77-AEC3-16AC-39F589CFD4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D6984E1-CF77-AEC3-16AC-39F589CFD4F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C168DE0-206F-44F8-B10C-89AD76C46C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C168DE0-206F-44F8-B10C-89AD76C46C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C168DE0-206F-44F8-B10C-89AD76C46C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C168DE0-206F-44F8-B10C-89AD76C46C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55C593C5-EA8C-060D-8D0C-1EADEF364337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C593C5-EA8C-060D-8D0C-1EADEF364337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C593C5-EA8C-060D-8D0C-1EADEF364337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C593C5-EA8C-060D-8D0C-1EADEF364337}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

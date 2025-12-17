@@ -88,3 +88,80 @@
 
 **Note**: All rules should be centralized in service layer
 
+---
+
+## UI Integration Issues (Fixed)
+
+### 11. Route Mismatch Between Angular and API
+**Severity**: High  
+**Date**: 2025-12-17
+
+**Issue**: Angular service was calling `/api/astronaut-duty` (kebab-case) but controller route `api/[controller]` resolves to `/api/AstronautDuty` (PascalCase). ASP.NET Core routing does not automatically convert hyphens.
+
+**Fix**: Updated `AstronautDutyService` to use `/api/AstronautDuty` to match the controller route.
+
+**File**: `Stargate.UI/stargate.ui.client/src/app/services/astronaut-duty.service.ts`
+
+---
+
+### 12. API Proxy Configuration Issues
+**Severity**: Medium  
+**Date**: 2025-12-17
+
+**Issue**: Proxy middleware was not correctly resolving the API service URL from Aspire service discovery, causing requests to fail with 404 or wrong port errors.
+
+**Fix**: 
+- Implemented multi-method service discovery:
+  1. Try HttpClient BaseAddress from Aspire service reference
+  2. Try configuration keys (`services__stargate-api__https__0`, etc.)
+  3. Fallback to default port with warning
+- Improved POST/PUT body handling (removed ContentLength check that could fail)
+- Added comprehensive logging for debugging
+- Configured HttpClient with service name `"stargate-api"` to match AppHost reference
+
+**File**: `Stargate.UI.Server/Program.cs`
+
+---
+
+### 13. Static File Serving 404 Errors
+**Severity**: High  
+**Date**: 2025-12-17
+
+**Issue**: Angular app returning 404 when launched from Aspire, indicating static files were not being found.
+
+**Fix**:
+- Created robust path resolution helper (`GetAngularClientDistPath`) that tries multiple strategies:
+  - From ContentRootPath
+  - From Assembly location
+  - From current working directory
+- Added extensive logging to show which path is being used
+- Configured `UseStaticFiles` and `UseDefaultFiles` correctly
+- Moved Swagger UI to `/swagger` route to prevent conflicts
+- Added automatic Angular build via MSBuild JavaScript SDK
+
+**File**: `Stargate.UI.Server/Program.cs`
+
+---
+
+### 14. Database Migration Conflicts
+**Severity**: Medium  
+**Date**: 2025-12-17
+
+**Issue**: `SqlException: 'There is already an object named 'Person' in the database'` when tables exist but migration history is out of sync.
+
+**Fix**: Added error handling in `Program.cs` to catch `SqlException` during migrations. If error indicates object already exists, log warning and continue (allowing seeding to proceed).
+
+**File**: `Stargate.Api/Program.cs`
+
+---
+
+### 15. Missing Automatic Angular Builds
+**Severity**: Medium  
+**Date**: 2025-12-17
+
+**Issue**: Had to manually run `ng build` when launching from Visual Studio.
+
+**Fix**: Configured `Stargate.UI.Client.esproj` with `<ShouldRunBuildScript>true</ShouldRunBuildScript>` to automatically run `npm run build` during .NET build process.
+
+**File**: `Stargate.UI/stargate.ui.client/Stargate.UI.Client.esproj`
+

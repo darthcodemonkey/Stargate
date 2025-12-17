@@ -1,0 +1,75 @@
+<div class="person-list-container">
+  <div class="header">
+    <h1>Astronauts</h1>
+    <button class="btn btn-primary" (click)="addPerson()">
+      <span class="icon">+</span>
+      Add Person
+    </button>
+  </div>
+
+  <div class="search-container">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search by name, rank, or duty title..."
+      [(ngModel)]="searchTerm"
+    />
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading astronauts...</p>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <div class="error-message">
+      <span class="error-icon">⚠️</span>
+      {{ error }}
+    </div>
+    <button class="btn btn-secondary" (click)="loadPeople()">Retry</button>
+  </div>
+
+  <div *ngIf="!loading && !error" class="people-grid">
+    <div
+      *ngFor="let person of filteredPeople"
+      class="person-card"
+      (click)="viewPerson(person)"
+    >
+      <div class="person-header">
+        <h2 class="person-name">{{ person.name }}</h2>
+        <span [class]="'badge ' + getStatusBadge(person).class">
+          {{ getStatusBadge(person).text }}
+        </span>
+      </div>
+      
+      <div class="person-details">
+        <div class="detail-row" *ngIf="person.currentRank">
+          <span class="label">Rank:</span>
+          <span class="value">{{ person.currentRank }}</span>
+        </div>
+        <div class="detail-row" *ngIf="person.currentDutyTitle">
+          <span class="label">Current Duty:</span>
+          <span class="value">{{ person.currentDutyTitle }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Career Start:</span>
+          <span class="value">{{ formatDate(person.careerStartDate) }}</span>
+        </div>
+        <div class="detail-row" *ngIf="person.careerEndDate">
+          <span class="label">Career End:</span>
+          <span class="value">{{ formatDate(person.careerEndDate) }}</span>
+        </div>
+      </div>
+
+      <div class="person-footer">
+        <span class="view-link">View Details →</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !error && filteredPeople.length === 0" class="empty-state">
+    <p *ngIf="searchTerm">No astronauts found matching "{{ searchTerm }}"</p>
+    <p *ngIf="!searchTerm">No astronauts found. Add your first person to get started.</p>
+  </div>
+</div>
+

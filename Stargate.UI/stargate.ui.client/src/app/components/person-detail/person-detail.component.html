@@ -1,0 +1,152 @@
+<div class="person-detail-container">
+  <div class="header-actions">
+    <button class="btn btn-secondary" (click)="goBack()">
+      ← Back to List
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading person details...</p>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <div class="error-message">
+      <span class="error-icon">⚠️</span>
+      {{ error }}
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !error" class="content">
+    <!-- Person Information Card -->
+    <div class="card person-info-card">
+      <div class="card-header">
+        <h1 *ngIf="!isEditMode" class="card-title">
+          {{ person?.name }}
+          <span *ngIf="person" [class]="'badge ' + getStatusBadge(person).class">
+            {{ getStatusBadge(person).text }}
+          </span>
+        </h1>
+        
+        <div *ngIf="isEditMode" class="edit-form">
+          <input
+            type="text"
+            class="edit-input"
+            [(ngModel)]="editName"
+            placeholder="Person Name"
+          />
+        </div>
+
+        <div class="card-actions" *ngIf="!loading">
+          <button
+            *ngIf="!isEditMode"
+            class="btn btn-secondary"
+            (click)="toggleEditMode()"
+          >
+            Edit
+          </button>
+          <button
+            *ngIf="isEditMode"
+            class="btn btn-primary"
+            (click)="savePerson()"
+            [disabled]="!editName.trim()"
+          >
+            Save
+          </button>
+          <button
+            *ngIf="isEditMode"
+            class="btn btn-secondary"
+            (click)="cancelEdit()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <div class="card-body" *ngIf="person && !isEditMode">
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Rank:</span>
+            <span class="info-value">{{ person.currentRank || '-' }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Current Duty:</span>
+            <span class="info-value">{{ person.currentDutyTitle || '-' }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Career Start Date:</span>
+            <span class="info-value">{{ formatDate(person.careerStartDate) }}</span>
+          </div>
+          <div class="info-item" *ngIf="person.careerEndDate">
+            <span class="info-label">Career End Date:</span>
+            <span class="info-value">{{ formatDate(person.careerEndDate) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Astronaut Duties Card -->
+    <div class="card duties-card">
+      <div class="card-header">
+        <h2 class="card-title">Astronaut Duties</h2>
+        <button
+          *ngIf="person && !isEditMode"
+          class="btn btn-primary"
+          (click)="addDuty()"
+        >
+          <span class="icon">+</span>
+          Add Duty
+        </button>
+      </div>
+
+      <div class="card-body">
+        <div *ngIf="loadingDuties" class="loading-container-small">
+          <div class="spinner-small"></div>
+          <p>Loading duties...</p>
+        </div>
+
+        <div *ngIf="!loadingDuties && duties.length === 0" class="empty-state">
+          <p>No astronaut duties found for this person.</p>
+          <button
+            *ngIf="person"
+            class="btn btn-primary"
+            (click)="addDuty()"
+          >
+            Add First Duty
+          </button>
+        </div>
+
+        <div *ngIf="!loadingDuties && duties.length > 0" class="duties-list">
+          <div
+            *ngFor="let duty of duties"
+            class="duty-item"
+            [class.current-duty]="isCurrentDuty(duty)"
+          >
+            <div class="duty-header">
+              <div class="duty-title-row">
+                <h3 class="duty-title">{{ duty.dutyTitle }}</h3>
+                <span *ngIf="isCurrentDuty(duty)" class="badge badge-active">Current</span>
+              </div>
+              <div class="duty-rank">{{ duty.rank }}</div>
+            </div>
+            <div class="duty-dates">
+              <div class="date-item">
+                <span class="date-label">Start:</span>
+                <span class="date-value">{{ formatDate(duty.dutyStartDate) }}</span>
+              </div>
+              <div class="date-item" *ngIf="duty.dutyEndDate">
+                <span class="date-label">End:</span>
+                <span class="date-value">{{ formatDate(duty.dutyEndDate) }}</span>
+              </div>
+              <div class="date-item" *ngIf="!duty.dutyEndDate">
+                <span class="date-label">End:</span>
+                <span class="date-value">Ongoing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
