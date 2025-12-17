@@ -1,6 +1,6 @@
 ## Bam Project Guardrails & Rules
 
-### **1. Relationship to SmokyMtnTaco Project Rules**
+### **1. Relationship to Main Project Rules**
 - **Base rules**: This project **inherits all non-project-specific coding and collaboration principles** from Main PROJECT-RULES.md (e.g., DRY/KISS/YAGNI/SOLID, testing mindset, security, logging, anti-loop behavior).
 - **Superseding scope**: **If any rule in this file conflicts with the Main rules, this file WINS for the `Bam` project only.**
 - **Project independence**: Changes made here **do NOT apply back** to Main; this is a **separate, interview-focused sandbox**.
