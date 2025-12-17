@@ -1,25 +1,16 @@
 ## Bam Project Guardrails & Rules
 
 ### **1. Relationship to SmokyMtnTaco Project Rules**
-- **Base rules**: This project **inherits all non-project-specific coding and collaboration principles** from `D:\Biz\Sandbox\SmokyMtnTaco-Aspire\Documentation\PROJECT-RULES.md` (e.g., DRY/KISS/YAGNI/SOLID, testing mindset, security, logging, anti-loop behavior).
-- **Superseding scope**: **If any rule in this file conflicts with the SmokyMtnTaco rules, this file WINS for the `Bam` project only.**
-- **Project independence**: Changes made here **do NOT apply back** to SmokyMtnTaco; this is a **separate, interview-focused sandbox**.
+- **Base rules**: This project **inherits all non-project-specific coding and collaboration principles** from Main PROJECT-RULES.md (e.g., DRY/KISS/YAGNI/SOLID, testing mindset, security, logging, anti-loop behavior).
+- **Superseding scope**: **If any rule in this file conflicts with the Main rules, this file WINS for the `Bam` project only.**
+- **Project independence**: Changes made here **do NOT apply back** to Main; this is a **separate, interview-focused sandbox**.
 
 ---
 
 ### **2. Identity & Roles**
 - **Flynn**: Project owner, interviewer, and final decision-maker.
-- **Tron**: AI coding partner and mock interview assistant.
-- **Addressing**: Tron should still behave as a senior engineer, but **may use neutral language like "you" or "the candidate" when appropriate for interview prompts and feedback.**
-
----
-
-### **3. Primary Purpose of This Project**
-- **Core goal**: Provide a **safe, fast iteration environment** for:
-  - Designing and running **mock interview exercises** (coding, systems design, architecture, DevOps, etc.).
-  - Evaluating **candidate solutions, tradeoffs, and communication**.
-  - Capturing **reusable patterns, good answers, and anti-patterns** for future interviews.
-- **Non-goal**: This is **not** a production app; performance and completeness matter **only as needed** to support realistic interview scenarios.
+- **Tron**: AI coding Engineer.
+- **Addressing**: Tron should behave as a senior engineer.
 
 ---
 
@@ -27,9 +18,6 @@
 - **Language & stack**:
   - Default stack is **.NET / C#** when unspecified, but **any language/stack is allowed** if explicitly chosen for a given exercise.
   - When deviating from .NET, **document the chosen stack** at the top of the exercise/readme.
-- **Pragmatic completeness**:
-  - It is **acceptable** for interview snippets to be **partially implemented** (e.g., missing persistence, error handling) **if the missing parts are clearly called out**.
-  - For "production-style" exercises, explicitly mark them as such and then follow stricter SmokyMtnTaco-style quality standards.
 - **Tests**:
   - New example services/components **should have at least one test** that demonstrates:
     - Happy path behavior, and
@@ -160,21 +148,7 @@ The presence of the following patterns **automatically signals senior-level comp
 
 ---
 
-### **5. Interview Exercise Structure**
-- **Exercise folders**:
-  - Each exercise lives under its **own folder** (for example: `Exercises/UserServiceRefactor`, `Exercises/ShoppingCartAPI`, `Exercises/SystemDesign-IngestPipeline`).
-  - Each exercise folder must contain a **short `README.md`** with:
-    - **Problem statement** (what the candidate is asked to do).
-    - **Constraints** (timebox, stack, any forbidden/required patterns).
-    - **Evaluation criteria** (what "good" looks like).
-    - **Expected artifacts** (code, tests, diagrams, written answers, etc.).
-- **Difficulty & timeboxing**:
-  - Tag exercises as **Easy / Medium / Hard** and include an **expected time range** (e.g., 30–45 minutes).
-  - Make it clear when **pseudocode or high-level design is acceptable** vs. when **compilable code is required**.
-
----
-
-### **6. Evaluation & Feedback Rules**
+### **5. Evaluation & Feedback Rules**
 - **Evaluation focus**:
   - Prioritize **reasoning, tradeoff discussion, and communication** over "perfect" syntax.
   - Capture **strengths and gaps** in a structured way (even if only as bullet points in the exercise `README.md` or a paired `NOTES.md`).
@@ -187,9 +161,9 @@ The presence of the following patterns **automatically signals senior-level comp
 
 ---
 
-### **7. Anti-Loop & Anti-Overbuild Guardrails (Stricter Here)**
+### **6. Anti-Loop & Anti-Overbuild Guardrails (Stricter Here)**
 - **Anti-loop**:
-  - If Tron or the interview process has **repeated the same debugging or design attempt 2+ times**, **stop and switch** to:
+  - If Tron has **repeated the same debugging or design attempt 2+ times**, **stop and switch** to:
     - Explaining the underlying concept, or
     - Asking a clarifying question, or
     - Proposing a different approach entirely.
@@ -207,32 +181,13 @@ The presence of the following patterns **automatically signals senior-level comp
   - Each exercise **must have**:
     - `README.md` (problem, constraints, evaluation).
     - Optionally `MODEL-ANSWER.md` and/or `INTERVIEWER-NOTES.md` for Flynn's internal use.
-- **Separation from SmokyMtnTaco**:
-  - Do **not** copy SmokyMtnTaco code verbatim unless the exercise is explicitly about that codebase.
-  - If you do reference SmokyMtnTaco patterns, **link or cite** them as examples, not as hard requirements.
-
 ---
 
-### **9. Collaboration Workflow**
-- **Planning**:
-  - Before adding a new exercise, write a **2–4 bullet plan** in the exercise `README.md` or an issue/task note.
-- **Changes**:
-  - Tron can **create and modify exercise code and docs freely** within this project, as long as:
-    - The intent of the exercise remains clear.
-    - Any breaking changes to an existing exercise are **noted at the top of its `README.md`** (e.g., "Updated on 2025-12-15 to simplify requirements.").
-- **Review**:
-  - Major exercise changes (new sections, new difficulty, new tech stack) should be **explicitly summarized** for Flynn.
- - **Git discipline (Flynn & Tron)**:
-   - Prefer **small, focused commits** with clear messages over large "mega-commits"
-   - Commit **early and often** at logical checkpoints (e.g., exercise skeleton created, service implemented, tests added, refactor done)
-   - Use commit messages that describe **intent and impact**, not just "changes"
-
----
 
 ### **10. Enforcement & Precedence**
 - **Precedence**:
   - For all work under `D:\Biz\Sandbox\Interviews\Bam\Stargate`, **this `PROJECT-RULES.md` is authoritative**.
-  - Where not explicitly overridden here, **general best practices and applicable parts of the SmokyMtnTaco rules still apply.**
+  - Where not explicitly overridden here, **general best practices and applicable parts of the Main rules still apply.**
 - **Scope**:
   - These rules apply to **all code, docs, and exercises** in this project, regardless of language or framework.
 
